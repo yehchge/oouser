@@ -31,10 +31,9 @@ class Widget {
         }
         
         $sql = "SELECT name,description FROM widget WHERE widgetid = $widgetID";
-        $rs = $this->hDB->query($sql);
-       
-
-        if(!$this->hDB->rowCount()) {
+        $rs = $this->hDB->prepare($sql);
+        $rs->execute();
+        if(!$rs->rowCount()) {
             throw new Exception('The specified widget does not exist!');
         }
         $data = $rs->fetch(PDO::FETCH_BOTH);
