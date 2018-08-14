@@ -90,7 +90,7 @@ class RockBand implements Band {
     }
 
     public function getGenre(){
-        return $this->bandGenre();
+        return $this->bandGenre;
     }
 
     public function addMusician(Musician $musician){
