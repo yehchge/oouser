@@ -4,25 +4,45 @@
  * @desc 介紹 UML 並實作一個樂隊管理物件
  */
 
+/**
+ * @desc 樂隊(Band)介面
+ */
 interface Band {
     public function getName();
+
+    // Genre 類型
     public function getGenre();
-    public function getMusician();
+
+    // Musician 音樂家
+    public function addMusician(Musician $musician);
     public function getMusicians();
 }
 
+/**
+ * @desc 音樂家(Musician)介面
+ */
 interface Musician {
-    public function addInstrument();
+
+    // Instrument 樂器
+    public function addInstrument(Instrument $instrument);
     public function getInstruments();
-    public function assignToBand();
+
+    // assign 分配
+    public function assignToBand(Band $band);
     public function getMusicianType();
 }
 
+/**
+ * @desc 樂器(Instrument)介面
+ */
 interface Instrument {
     public function getName();
     public function getCategory();
 }
 
+/**
+ * @desc 吉他手(Guitarist)
+ */
 class Guitarist implements Musician {
     private $last;
     private $first;
@@ -50,11 +70,11 @@ class Guitarist implements Musician {
     }
 
     public function getBand(){
-        return $tjis->$bandReference;
+        return $this->bandReference;
     }
 
     public function assignToBand(Band $band){
-        $this->$bandReference = $band;
+        $this->bandReference = $band;
     }
 
     public function getMusicianType(){
@@ -67,6 +87,9 @@ class Guitarist implements Musician {
 
 }
 
+/**
+ * @desc 首席吉他手(LeadGuitarist)
+ */
 class LeadGuitarist extends Guitarist {
     function __construct($last, $first){
         parent::__construct($last, $first);
@@ -74,6 +97,9 @@ class LeadGuitarist extends Guitarist {
     }
 }
 
+/**
+ * @desc 搖滾樂隊(RockBand)
+ */
 class RockBand implements Band {
     private $bandName;
     private $bandGenre;
@@ -82,7 +108,7 @@ class RockBand implements Band {
     function __construct($bandName){
         $this->bandName = $bandName;
         $this->musicians = array();
-        $this->bandGenre = "rock";
+        $this->bandGenre = "rock"; // 搖滾
     }
 
     public function getName(){
@@ -95,7 +121,7 @@ class RockBand implements Band {
 
     public function addMusician(Musician $musician){
         array_push($this->musicians, $musician);
-        $musician->asignToBand($this);
+        $musician->assignToBand($this);
     }
 
     public function getMusicians(){
@@ -103,6 +129,9 @@ class RockBand implements Band {
     }
 }
 
+/**
+ * @desc 吉他(Guitar)
+ */
 class Guitar implements Instrument {
     private $name;
     private $category;
@@ -143,5 +172,5 @@ foreach($band->getMusicians() as $musician){
         echo "And plays the " . $instrument->getName() . " ";
         echo $instrument->getCategory() . "\n";
     }
-    echo "<p>";
+    echo "\r\n";
 }

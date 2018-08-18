@@ -4,6 +4,9 @@
  * @desc 說明如何使用 UML 的類別示意圖, 寫出一個物件
  */
 
+/**
+ * @desc 音樂家(Musician)
+ */
 class Musician {
 
     private $last;
@@ -18,15 +21,15 @@ class Musician {
     }
 
     public function getName(){
-        echo $this->first . $this->last;
+        return $this->first . ' ' . $this->last;
     }
 
     public function getBand(){
-        echo $this->bandName;
+        return $this->bandName;
     }
 
     public function getMusicianType(){
-        echo $this->type;
+        return $this->type;
     }
 
     public function setName($first, $last){
