@@ -3,5 +3,3 @@
 interface Validator {
 	function validate();
 }
-
-?>

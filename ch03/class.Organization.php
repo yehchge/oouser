@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @desc 組織(Organization)
+ */
 require_once('class.Entity.php');
 require_once('class.Individual.php');
 
@@ -24,5 +28,3 @@ class Organization extends Entity {
 	}
 
 }
-
-?>

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @desc 地址(Address)
+ */
 require_once('class.PropertyObject.php');
 
 class Address extends PropertyObject {
@@ -51,5 +54,3 @@ class Address extends PropertyObject {
 	}
 
 }
-
-?>

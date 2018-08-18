@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @desc 實體(Entity)
+ */
 require_once('class.PropertyObject.php');
 require_once('class.PhoneNumber.php');
 require_once('class.Address.php');
@@ -85,5 +89,3 @@ abstract class Entity extends PropertyObject {
 	}
 
 }
-
-?>

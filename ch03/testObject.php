@@ -29,8 +29,3 @@ echo $aa->age;
 //echo $aa->get("tom");
 //echo $aa->get("mary");
 //echo $aa->get("wss");
-
-
-
-
-/* End of File */

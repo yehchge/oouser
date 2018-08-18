@@ -1,4 +1,5 @@
 <?php
+
 require_once('class.Entity.php'); // this will be needed later
 require_once('class.Individual.php');
 require_once('class.Organization.php');
@@ -14,7 +15,7 @@ class DataManager
 
 		$dsn = "mysql:host=localhost;dbname=sample_db;port:3306;charset=utf8";
 		try {
-			$hDB = new PDO($dsn,'bill','bill098',array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8';"));
+			$hDB = new PDO($dsn,'phpuser','phppass',array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8';"));
 			$hDB->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		} catch(PDOException $e) {
 			echo $e->getMessage();
@@ -49,7 +50,7 @@ class DataManager
 	}
 
 	public static function getPhoneNumberData($phoneID) {
-		$sql = "SELECT * FROM entityPhone WHERE phoneid = $phoneID";
+		$sql = "SELECT * FROM entityphone WHERE phoneid = $phoneID";
 		$hDB = DataManager::_getConnection();
 		$res = $hDB->prepare($sql);
 		$res->execute();
@@ -131,14 +132,16 @@ class DataManager
 		}
 	}
 
-	public static function getEmployer($indivdualID) {
+	public static function getEmployer($individualID) {
 		$sql = "SELECT organizationid FROM entityemployee WHERE individualid = $individualID";
-		$res = mysql_query(DataManager::_getConnection(), $sql);
-		if(!($res && mysql_num_rows($res))) {
-			die("Failed getting employer info for individual $individualId");
+		$hDB = DataManager::_getConnection();
+		$res = $hDB->prepare($sql);
+		$res->execute();
+		if(!($res && $res->rowCount())) {
+			die("Failed getting employer info for individual $individualID");
 		}
 
-		$row = mysql_fetch_assoc($res);
+		$row = $res->fetch(PDO::FETCH_ASSOC);
 
 		if($row) {
 			return new Organization($row['organizationid']);
@@ -149,14 +152,16 @@ class DataManager
 
 	public static function getEmployees($orgID) {
 		$sql = "SELECT individualid FROM entityemployee WHERE organizationid = $orgID";
-		$res = mysql_query(DataManager::_getConnection(), $sql);
-
-		if(!($res && mysql_num_rows($res))) {
+		$hDB = DataManager::_getConnection();
+		$res = $hDB->prepare($sql);
+		$res->execute();
+		if(!$res) {
 			die("Failed getting employee info for org $orgID");
 		}
-		if(mysql_num_rows($res)) {
+
+		if($res->rowCount()) {
 			$objs = array();
-			while($row = mysql_fetch_assoc($res)) {
+			while($row = $res->fetch(PDO::FETCH_ASSOC)) {
 				$objs[] = new Individual($row['individualid']);
 			}
 			return $objs;
@@ -193,5 +198,3 @@ class DataManager
 	}
 
 }
-
-?>

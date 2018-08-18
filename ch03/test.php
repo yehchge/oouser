@@ -41,8 +41,18 @@ foreach($arContacts as $objEntity) {
 		}
 	}
 
+	if(get_class($objEntity) == 'Individual') {
+		print "<h2>Employer</h2>";
+		$obj = $objEntity->getEmployer();
+		println($obj->__toString());
+	} else {
+		$arEmployees = $objEntity->getEmployees();
+		print "<h2>Employee</h2>";
+		foreach($arEmployees as $objEmployer){
+			println($objEmployer->__toString());
+		}
+	}
+
 	print "<hr>\n";
 
 }
-
-?>

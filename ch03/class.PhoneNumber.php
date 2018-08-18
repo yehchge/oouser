@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @desc 電話(Phone)
+ */
 require_once('class.PropertyObject.php');
 
 class PhoneNumber extends PropertyObject {
@@ -31,5 +35,3 @@ class PhoneNumber extends PropertyObject {
 		return $this->number . ($this->extension ? ' x' . $this->extension : '');
 	}
 }
-
-?>

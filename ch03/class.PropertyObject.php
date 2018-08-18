@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @desc 基底類別
+ */
 require_once('interface.Validator.php');
 
 abstract class PropertyObject implements Validator {
@@ -39,8 +43,9 @@ abstract class PropertyObject implements Validator {
 			// If the value of the property really has changed
 			//and it's not already in the changedProperties array,
 			// add it.
-			if($this->propertyTable[$propertyName] != $value && !in_array($propertyName, $this->changedProperties)) {
-				$this->changedProperties[] = $propertyName;
+			if($this->propertyTable[$propertyName] != $value 
+				&& !in_array($propertyName, $this->changedProperties)) {
+					$this->changedProperties[] = $propertyName;
 			}
 			//Now set the new value
 			$this->data[$this->propertyTable[$propertyName]] = $value;
@@ -51,5 +56,3 @@ abstract class PropertyObject implements Validator {
 	}
 
 }
-
-?>

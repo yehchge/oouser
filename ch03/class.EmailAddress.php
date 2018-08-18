@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @desc 電子郵件(Email)
+ */
 require_once("class.PropertyObject.php");
 
 class EmailAddress extends PropertyObject {
@@ -30,5 +34,3 @@ class EmailAddress extends PropertyObject {
 		return $this->email;
 	}
 }
-
-?>
