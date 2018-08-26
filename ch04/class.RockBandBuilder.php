@@ -9,8 +9,8 @@ class RockBandBuilder implements Builder {
 
     private $band;
 
-    function __construct($name){
-        $this->band = new RockBand($name);
+    function __construct(){
+        $this->band = new RockBand();
     }
 
     public function getBand(){
@@ -23,7 +23,7 @@ class RockBandBuilder implements Builder {
         $drumset->add(new Instrument("cymbal"));
         $drumset->add(new Instrument("bass drum"));
         $drumset->add(new Instrument("snare drum"));
-
+  
         $musician->addInstrument($drumset);
         $this->band->addMusician($musician);
     }

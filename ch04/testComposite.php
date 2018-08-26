@@ -21,11 +21,11 @@ abstract class AbstractInstrument {
     private $category;
     private $instruments = array();
 
-    public function add(AbstractInstrument & $instrument){
+    public function add(AbstractInstrument $instrument){
         array_push($this->instruments, $instrument);
     }
 
-    public function remove(AbstractInstrument & $instrument){
+    public function remove(AbstractInstrument $instrument){
         array_pop($this->instruments);
     }
 
@@ -111,6 +111,7 @@ $cymbals->add(new Cymbal("small crash"));
 $cymbals->add(new Cymbal("large high hat"));
 $drums->add($cymbals);
 
+// 加入以下註解的程式, 會讓程式出現無限迴圈
 // $cymbals->add($drums);
 
 $guitar = new Guitar("gibson les paul");

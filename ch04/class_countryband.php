@@ -3,15 +3,15 @@
 require_once('interface_band.php');
 
 /**
- * @desc 搖滾樂隊(RockBand)
+ * @desc 民歌樂隊(CountryBand)
  */
-class RockBand implements Band {
+class CountryBand implements Band {
     private $bandGenre;
     private $musicians;
 
     function __construct(){
         $this->musicians = array();
-        $this->bandGenre = "rock"; // 搖滾
+        $this->bandGenre = "country"; // 民歌
     }
 
     public function getGenre(){

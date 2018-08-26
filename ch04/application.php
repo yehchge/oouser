@@ -6,6 +6,6 @@ class Application {
         $builder->buildGuitarist();
         $builder->buildDrummer();
 
-        return $builder;
+        return $builder->getBand();
     }
 }

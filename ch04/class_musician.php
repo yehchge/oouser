@@ -14,21 +14,26 @@ class Musician {
     private $bandName; // 樂隊名稱
     private $instruments = array();
     private $bandReference;
+    private $aInstruments = array();
 
     function __construct($bandName){
         $this->bandName = $bandName;
     }
 
-    public function getBand(){
+    public function getMusician(){
         return $this->bandName;
     }
 
-    public function setBand($bandName){
-        $this->bandName = $bandName;
+    public function getBand(){
+        return $this->bandReference;
     }
 
     public function addInstrument(Instrument $instrument){
         array_push($this->instruments, $instrument);
+    }
+
+    public function getInstruments(){
+        return $this->instruments;
     }
 
     public function assignToBand(Band $band){

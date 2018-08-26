@@ -4,7 +4,6 @@
  * @desc 樂隊(Band)介面
  */
 interface Band {
-    public function getName();
 
     // Genre 類型
     public function getGenre();
