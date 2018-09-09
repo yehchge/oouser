@@ -5,11 +5,14 @@
  * @created 2018/09/09
  */
 
+require_once("class.StudentFactory.php");
+
 $studentID = 1; // use a valid studentid value from your student table
 
 try{
     $objStudent = StudentFactory::getStudent($studentID);
-} catch (Exception e){
+} catch (Exception $e){
+    echo $e->getMessage()."\n";
     die("Student #$studentID doesn`t exist in the database!");
 }
 

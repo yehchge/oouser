@@ -5,6 +5,8 @@
  * @created 2018/09/08
  */
 
+require_once("class.CourseCollection.php");
+
 class Student {
 
     private $_id;
@@ -28,8 +30,8 @@ class Student {
         return $this->_id;
     }
 
-    private function _loadCourses(Collection $col){
-        $arCourses = Studentfactory::getCoursesForStudent($this->_id, $col);
+    public function _loadCourses(Collection $col){
+        $arCourses = StudentFactory::getCoursesForStudent($this->_id, $col);
     }
 
     public function __toString(){

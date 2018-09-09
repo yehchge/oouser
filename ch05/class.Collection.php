@@ -93,6 +93,6 @@ class Collection {
 
 }
 
-class KeyInUseExcetion extends Exception { }
+class KeyInUseException extends Exception { }
 
 class KeyInvalidException extends Exception { }
